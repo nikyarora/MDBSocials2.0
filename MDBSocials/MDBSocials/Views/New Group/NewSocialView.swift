@@ -1,18 +1,19 @@
 //
-//  AppDelegate.swift
+//  NewSocialView.swift
 //  MDBSocials
 //
-//  Created by Nikhar Arora on 2/19/18.
+//  Created by Nikhar Arora on 3/3/18.
 //  Copyright © 2018 Nikhar Arora. All rights reserved.
 //
 
 import UIKit
 import SkyFloatingLabelTextField
+import MKSpinner
 import CoreLocation
 import LocationPicker
 
 class NewSocialView: UIView {
-
+    
     var firstBlockView: UIView!
     var eventNameField: SkyFloatingLabelTextField!
     var eventDescriptionField: SkyFloatingLabelTextField!
@@ -129,7 +130,7 @@ class NewSocialView: UIView {
         selectedImageView = UIImageView(frame: CGRect(x: 10, y: 10, width: secondBlockView.frame.width/2 - 20, height: secondBlockView.frame.height - 20))
         selectedImageView.contentMode = .scaleAspectFit
         selectedImageView.layer.cornerRadius = 10
-        selectedImageView.image = #imageLiteral(resourceName: "image")
+        selectedImageView.image = #imageLiteral(resourceName: "defaultImage")
         secondBlockView.addSubview(selectedImageView)
     }
     
@@ -145,7 +146,9 @@ class NewSocialView: UIView {
     
     @objc func newPost() {
         if eventNameField.hasText && eventDescriptionField.hasText && selectedImage != nil && selectedLocation != nil {
+            MKFullSpinner.show("Uploading Post", animated: true)
             FirebaseDatabaseHelper.newPostWithImage(selectedImage: selectedImage, name: eventNameField.text!, description: eventDescriptionField.text!, date: datePicker.date, location: selectedLocation).then { success -> Void in
+                MKFullSpinner.hide()
                 self.viewController.dismiss(animated: true, completion: {
                     print("Post Complete")
                 })
@@ -198,7 +201,7 @@ class NewSocialView: UIView {
             print("Back to feed")
         }
     }
-
+    
 }
 
 extension NewSocialView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -213,3 +216,4 @@ extension NewSocialView: UIImagePickerControllerDelegate, UINavigationController
         viewController.dismiss(animated: true, completion: nil)
     }
 }
+

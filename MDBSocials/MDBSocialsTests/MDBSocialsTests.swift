@@ -1,10 +1,4 @@
-//
-//  MDBSocialsTests.swift
-//  MDBSocialsTests
-//
-//  Created by Will Oakley on 2/19/18.
-//  Copyright © 2018 Will Oakley. All rights reserved.
-//
+
 
 import XCTest
 @testable import MDBSocials

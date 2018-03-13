@@ -9,7 +9,6 @@
 import Foundation
 import FirebaseDatabase
 import FirebaseStorage
-import MKSpinner
 import ObjectMapper
 import SwiftyJSON
 import PromiseKit
@@ -26,7 +25,6 @@ class FirebaseDatabaseHelper {
             imageRef.putData(data, metadata: nil) { (metadata, error) in
                 guard let metadata = metadata else {
                     print("Error uploading")
-                    MKFullSpinner.hide()
                     return
                 }
                 let downloadURL = String(describing: metadata.downloadURL()!)
@@ -64,11 +62,9 @@ class FirebaseDatabaseHelper {
         let usersRef = Database.database().reference().child("User")
         let imageRef = Storage.storage().reference().child("profileImages/" + username.trimmingCharacters(in: .whitespaces) + ".png")
         let data = UIImagePNGRepresentation(image)!
-        MKFullSpinner.show("Uploading Profile Picture")
         imageRef.putData(data, metadata: nil) { (metadata, error) in
             guard let metadata = metadata else {
-                print(error)
-                MKFullSpinner.hide()
+
                 return
             }
             let downloadURL = String(describing: metadata.downloadURL()!)
@@ -76,7 +72,6 @@ class FirebaseDatabaseHelper {
             let newUser = ["name": name, "username": username, "email": email, "profilePictureURL": downloadURL, "userID": userID] as [String : Any]
             let childUpdates = ["/\(userID)/": newUser]
             usersRef.updateChildValues(childUpdates)
-            MKFullSpinner.hide()
             successBlock()
         }
     }
