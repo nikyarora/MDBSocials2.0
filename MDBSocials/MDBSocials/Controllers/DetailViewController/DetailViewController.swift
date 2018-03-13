@@ -45,7 +45,7 @@ class DetailViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is InterestedUsersViewController {
             let dest = segue.destination as! InterestedUsersViewController
-            dest.userIDArray = post.interestedUserIds
+            dest.userIDs = post.interestedUserIds
         }
     }
 }

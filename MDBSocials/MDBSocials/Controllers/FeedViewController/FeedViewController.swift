@@ -23,14 +23,20 @@ class FeedViewController: UIViewController {
     }
         
     func setupNavigationBar(){
-        self.tabBarController?.navigationItem.title = "My Feed"
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 74, height: 44))
+        imageView.contentMode = .scaleAspectFit
+        let image = #imageLiteral(resourceName: "mdbsocials")
+        imageView.image = image
+        navigationItem.titleView = imageView
+        self.tabBarController?.navigationItem.titleView = imageView
         self.tabBarController?.navigationController?.navigationBar.tintColor = .white
         self.tabBarController?.navigationController?.navigationBar.barTintColor = .MDBBlue
         let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         
         logoutButton = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 30))
-        logoutButton.setTitle("Log Out", for: .normal)
+        //logoutButton.setTitle("Logout", for: .normal)
+        logoutButton.setImage(#imageLiteral(resourceName: "logout"), for: .normal)
         logoutButton.setTitleColor(.white, for: .normal)
         logoutButton.addTarget(self, action: #selector(logOut), for: .touchUpInside)
         self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoutButton)

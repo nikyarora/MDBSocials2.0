@@ -10,13 +10,18 @@ import UIKit
 
 class InterestedUsersViewController: UIViewController {
     
-    var userIDArray: [String]?
-    var usersArray: [UserModel] = []
+    var userIDs: [String]?
+    var users: [UserModel] = []
     
     var tableView: UITableView!
     
     override func viewDidLoad() {
-        self.navigationItem.title = "Interested Users"
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 74, height: 44))
+        imageView.contentMode = .scaleAspectFit
+        let image = #imageLiteral(resourceName: "mdbsocials")
+        imageView.image = image
+        navigationItem.titleView = imageView
+        self.navigationItem.titleView = imageView
         setupTableView()
     }
     
@@ -30,11 +35,11 @@ class InterestedUsersViewController: UIViewController {
     }
     
     func getUsers(){
-        if userIDArray != nil {
-            for u in userIDArray!{
+        if userIDs != nil {
+            for u in userIDs!{
                 print("Getting User")
                 FirebaseDatabaseHelper.getUserWithId(id: u).then {user in
-                    self.usersArray.append(user)
+                    self.users.append(user)
                     }.then {
                         self.tableView.reloadData()
                 }
@@ -54,12 +59,12 @@ extension InterestedUsersViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return usersArray.count
+        return users.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "user", for: indexPath) as! FeedTableViewCell
-        let user = usersArray[indexPath.row]
+        let user = users[indexPath.row]
         cell.awakeFromNib()
         cell.titleLabel.text = user.name!
         cell.posterNameLabel.text = user.username!

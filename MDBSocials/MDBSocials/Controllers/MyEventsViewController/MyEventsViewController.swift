@@ -10,7 +10,7 @@ import UIKit
 
 class MyEventsViewController: UIViewController {
 
-    var eventsTableView: UITableView!
+    var myEventsTableView: UITableView!
     var posts: [Post] = []
     var selectedPost: Post!
     var postsLoaded = false
@@ -22,13 +22,18 @@ class MyEventsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         setupNavigationBar()
-        eventsTableView.reloadData()
+        myEventsTableView.reloadData()
     }
     
     func setupNavigationBar(){
         self.tabBarController?.navigationItem.rightBarButtonItem = nil
         self.tabBarController?.navigationItem.leftBarButtonItem = nil
-        self.tabBarController?.navigationItem.title = "My Events"
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 74, height: 44))
+        imageView.contentMode = .scaleAspectFit
+        let image = #imageLiteral(resourceName: "mdbsocials")
+        imageView.image = image
+        navigationItem.titleView = imageView
+        self.tabBarController?.navigationItem.titleView = imageView
         self.tabBarController?.navigationController?.navigationBar.tintColor = .white
         self.tabBarController?.navigationController?.navigationBar.barTintColor = .MDBBlue
         let textAttributes = [NSAttributedStringKey.foregroundColor:UIColor.white]
@@ -36,12 +41,12 @@ class MyEventsViewController: UIViewController {
     }
     
     func setupTableView(){
-        eventsTableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
-        eventsTableView.delegate = self
-        eventsTableView.dataSource = self
-        eventsTableView.separatorColor = .clear
-        view.addSubview(eventsTableView)
-        eventsTableView.register(FeedTableViewCell.self, forCellReuseIdentifier: "post")
+        myEventsTableView = UITableView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
+        myEventsTableView.delegate = self
+        myEventsTableView.dataSource = self
+        myEventsTableView.separatorColor = .clear
+        view.addSubview(myEventsTableView)
+        myEventsTableView.register(FeedTableViewCell.self, forCellReuseIdentifier: "post")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -63,7 +68,7 @@ extension MyEventsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = eventsTableView.dequeueReusableCell(withIdentifier: "post", for: indexPath) as! FeedTableViewCell
+        let cell = myEventsTableView.dequeueReusableCell(withIdentifier: "post", for: indexPath) as! FeedTableViewCell
         let post = posts[indexPath.row]
         cell.awakeFromNib()
         cell.startLoadingView()

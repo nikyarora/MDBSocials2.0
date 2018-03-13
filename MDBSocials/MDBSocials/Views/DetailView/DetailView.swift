@@ -11,31 +11,31 @@ import MapKit
 
 class DetailView: UIView {
 
-    var firstBlockView: UIView!
+    var imageBlock: UIView!
     var mainImageView: UIImageView!
     var mapView: MKMapView!
     var getDirectionsButton: UIButton!
     
-    var secondBlockView: UIView!
+    var eventInfoView: UIView!
     var descriptionLabel: UILabel!
     var posterNameLabel: UILabel!
     
-    var thirdBlockView: UIView!
-    var imInterestedButton: UIButton!
+    var interestedInformationView: UIView!
+    var interestedButton: UIButton!
     var viewInterestedButton: UIButton!
     var interestedLabel: UILabel!
     
-    var fourthBlockView: UIView!
-    var lyftLogo: UIImageView!
-    var lyftInfoLabel: UILabel!
+    var lyftInformationView: UIView!
+    var lyftLogoImage: UIImageView!
+    var lyftLabelText: UILabel!
     
     var viewController: DetailViewController!
     
     init(frame: CGRect, controller: DetailViewController){
         super.init(frame: frame)
         viewController = controller
-        setupMap()
         setupHost()
+        setupMap()
         setupInterested()
         setupLyft()
         mainImageView.image = viewController.post.image ?? UIImage(named: "defaultImage")
@@ -48,106 +48,104 @@ class DetailView: UIView {
     }
     
     func setupMap(){
-        let yPos = CGFloat(85)
-        firstBlockView = UIView(frame: CGRect(x: 15, y: yPos, width: self.frame.width - 30, height: 200))
-        firstBlockView.backgroundColor = .MDBYellow
-        firstBlockView.layer.cornerRadius = 10
-        self.addSubview(firstBlockView)
+        let yPos = CGFloat(200)
+        imageBlock = UIView(frame: CGRect(x: 15, y: yPos, width: self.frame.width - 30, height: 200))
+        imageBlock.backgroundColor = .MDBYellow
+        imageBlock.layer.cornerRadius = 10
+        self.addSubview(imageBlock)
         
-        mainImageView = UIImageView(frame: CGRect(x: 10, y: 10, width: firstBlockView.frame.width/2 - 20, height: firstBlockView.frame.height - 20))
+        mainImageView = UIImageView(frame: CGRect(x: 0, y:0, width: imageBlock.frame.width, height: imageBlock.frame.height))
         mainImageView.contentMode = .scaleAspectFill
         mainImageView.layer.cornerRadius = 10
         mainImageView.layer.masksToBounds = true
-        firstBlockView.addSubview(mainImageView)
+        imageBlock.addSubview(mainImageView)
         
-        mapView = MKMapView(frame: CGRect(x: firstBlockView.frame.width/2 + 10, y: 10, width: firstBlockView.frame.width/2 - 20, height: firstBlockView.frame.height - 70))
+        mapView = MKMapView(frame: CGRect(x: 10, y: 650, width: 100, height: 100))
         mapView.mapType = .standard
         mapView.layer.cornerRadius = 10
         mapView.layer.masksToBounds = true
-        firstBlockView.addSubview(mapView)
+        self.addSubview(mapView)
         
-        let height = firstBlockView.frame.height - 30 - mapView.frame.height
         
-        getDirectionsButton = UIButton(frame: CGRect(x: firstBlockView.frame.width/2 + 10, y: firstBlockView.frame.height - height - 10, width: firstBlockView.frame.width/2 - 20, height: height))
+        getDirectionsButton = UIButton(frame: CGRect(x: 150, y: 675, width: 200, height: 50))
         getDirectionsButton.addTarget(self, action: #selector(getDirections), for: .touchUpInside)
         getDirectionsButton.layer.cornerRadius = 10
-        getDirectionsButton.setTitle("Get Directions", for: .normal)
-        getDirectionsButton.setTitleColor(.MDBYellow, for: .normal)
-        getDirectionsButton.backgroundColor = .MDBBlue
+        getDirectionsButton.setTitle("Directions", for: .normal)
+        getDirectionsButton.setTitleColor(.MDBBlue, for: .normal)
+        getDirectionsButton.backgroundColor = .MDBYellow
         getDirectionsButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        firstBlockView.addSubview(getDirectionsButton)
+        self.addSubview(getDirectionsButton)
     }
     
     func setupHost(){
-        let yPos = firstBlockView.frame.minY + firstBlockView.frame.height + 20
-        secondBlockView = UIView(frame: CGRect(x: 15, y: yPos , width: self.frame.width - 30, height: 90))
-        secondBlockView.backgroundColor = .MDBYellow
-        secondBlockView.layer.cornerRadius = 10
-        self.addSubview(secondBlockView)
+        let yPos = 100
+        eventInfoView = UIView(frame: CGRect(x: 15, y: yPos , width: Int(self.frame.width - 30), height: 90))
+        eventInfoView.backgroundColor = .MDBYellow
+        eventInfoView.layer.cornerRadius = 10
+        self.addSubview(eventInfoView)
         
         posterNameLabel = UILabel(frame: CGRect(x: 15, y: 5, width: self.frame.width - 30, height: 30))
         posterNameLabel.textAlignment = .left
-        //posterNameLabel.font = UIFont(name: "Helvetica Bold", size: 18)
         
         posterNameLabel.textColor = .white
-        secondBlockView.addSubview(posterNameLabel)
+        eventInfoView.addSubview(posterNameLabel)
     
-        descriptionLabel = UILabel(frame: CGRect(x: 15, y: 50, width: secondBlockView.frame.width - 30, height: 30))
+        descriptionLabel = UILabel(frame: CGRect(x: 15, y: 50, width: eventInfoView.frame.width - 30, height: 30))
         descriptionLabel.numberOfLines = 2
         descriptionLabel.textColor = .white
         descriptionLabel.textAlignment = .left
-        secondBlockView.addSubview(descriptionLabel)
+        eventInfoView.addSubview(descriptionLabel)
     }
     
     func setupInterested(){
-        let yPos = secondBlockView.frame.minY + secondBlockView.frame.height + 20
-        thirdBlockView = UIView(frame: CGRect(x: 15, y: yPos, width: self.frame.width - 30, height: 125))
-        thirdBlockView.backgroundColor = .MDBYellow
-        thirdBlockView.layer.cornerRadius = 10
-        self.addSubview(thirdBlockView)
+        let yPos = CGFloat(410)
+        interestedInformationView = UIView(frame: CGRect(x: 15, y: yPos, width: self.frame.width - 30, height: 125))
+        interestedInformationView.backgroundColor = .MDBYellow
+        interestedInformationView.layer.cornerRadius = 10
+        self.addSubview(interestedInformationView)
         
-        interestedLabel = UILabel(frame: CGRect(x: 15, y: 5, width: thirdBlockView.frame.width - 30, height: 30))
+        interestedLabel = UILabel(frame: CGRect(x: 15, y: 5, width: interestedInformationView.frame.width - 30, height: 30))
         interestedLabel.textColor = .white
-        thirdBlockView.addSubview(interestedLabel)
+        interestedInformationView.addSubview(interestedLabel)
         
-        imInterestedButton = UIButton(frame: CGRect(x: 10, y: 60, width: thirdBlockView.frame.width/2 - 20, height: 50))
-        imInterestedButton.addTarget(self, action: #selector(tappedImInterested), for: .touchUpInside)
-        imInterestedButton.layer.cornerRadius = 10
-        imInterestedButton.titleLabel?.numberOfLines = 2
-        thirdBlockView.addSubview(imInterestedButton)
+        interestedButton = UIButton(frame: CGRect(x: 10, y: 60, width: interestedInformationView.frame.width/2 - 20, height: 50))
+        interestedButton.addTarget(self, action: #selector(tappedInterested), for: .touchUpInside)
+        interestedButton.layer.cornerRadius = 10
+        interestedButton.titleLabel?.numberOfLines = 2
+        interestedInformationView.addSubview(interestedButton)
         
-        viewInterestedButton = UIButton(frame: CGRect(x: thirdBlockView.frame.width/2 + 10, y: 60, width: thirdBlockView.frame.width/2 - 20, height: 50))
+        viewInterestedButton = UIButton(frame: CGRect(x: interestedInformationView.frame.width/2 + 10, y: 60, width: interestedInformationView.frame.width/2 - 20, height: 50))
         viewInterestedButton.addTarget(self, action: #selector(tappedViewInterested), for: .touchUpInside)
         viewInterestedButton.layer.cornerRadius = 10
         viewInterestedButton.setTitle("See Interested", for: .normal)
         viewInterestedButton.setTitleColor(.MDBYellow, for: .normal)
         viewInterestedButton.backgroundColor = .MDBBlue
         viewInterestedButton.titleLabel?.adjustsFontSizeToFitWidth = true
-        thirdBlockView.addSubview(viewInterestedButton)
+        interestedInformationView.addSubview(viewInterestedButton)
     }
     
     func setupLyft(){
-        let yPos = thirdBlockView.frame.minY + thirdBlockView.frame.height + 20
-        fourthBlockView = UIView(frame: CGRect(x: 15, y: yPos, width: self.frame.width - 30, height: 80))
-        fourthBlockView.backgroundColor = .MDBYellow
-        fourthBlockView.layer.cornerRadius = 10
-        self.addSubview(fourthBlockView)
+        let yPos = CGFloat(545)
+        lyftInformationView = UIView(frame: CGRect(x: 15, y: yPos, width: self.frame.width - 30, height: 80))
+        lyftInformationView.backgroundColor = .MDBYellow
+        lyftInformationView.layer.cornerRadius = 10
+        self.addSubview(lyftInformationView)
         
-        lyftLogo = UIImageView(frame: CGRect(x: 10, y: 10, width: fourthBlockView.frame.height - 20, height: fourthBlockView.frame.height - 20))
-        lyftLogo.image = #imageLiteral(resourceName: "lyftLogo")
-        fourthBlockView.addSubview(lyftLogo)
+        lyftLogoImage = UIImageView(frame: CGRect(x: 10, y: 10, width: lyftInformationView.frame.height - 20, height: lyftInformationView.frame.height - 20))
+        lyftLogoImage.image = #imageLiteral(resourceName: "lyftLogo")
+        lyftInformationView.addSubview(lyftLogoImage)
         
-        lyftInfoLabel = UILabel(frame: CGRect(x: 80, y: 10, width: fourthBlockView.frame.width - 80, height: fourthBlockView.frame.height - 20))
-        lyftInfoLabel.textColor = .white
-        lyftInfoLabel.numberOfLines = 2
-        fourthBlockView.addSubview(lyftInfoLabel)
+        lyftLabelText = UILabel(frame: CGRect(x: 80, y: 10, width: lyftInformationView.frame.width - 80, height: lyftInformationView.frame.height - 20))
+        lyftLabelText.textColor = .white
+        lyftLabelText.numberOfLines = 2
+        lyftInformationView.addSubview(lyftLabelText)
     }
     
     func queryLyft(){
         let eventLocation = CLLocationCoordinate2DMake(viewController.post.latitude!, viewController.post.longitude!)
         if viewController.currentLocation != nil {
             LyftAPIHelper.getRideEstimate(pickup: viewController.currentLocation!, dropoff: eventLocation) { costEstimate in
-                self.lyftInfoLabel.text = "A Lyft ride currently costs $" + String(describing: costEstimate.estimate!.maxEstimate.amount) + " from your current location."
+                self.lyftLabelText.text = "A Lyft ride currently costs $" + String(describing: costEstimate.estimate!.maxEstimate.amount) + " from your current location."
             }
         } else {
             print("Unable to find current location.")
@@ -177,25 +175,25 @@ class DetailView: UIView {
         }
         
         if userHasSaidInterested {
-            imInterestedButton.setTitle("Already Interested", for: .normal)
-            imInterestedButton.setTitleColor(.MDBBlue, for: .normal)
-            imInterestedButton.backgroundColor = .clear
-            imInterestedButton.isUserInteractionEnabled = false
+            interestedButton.setTitle("Already Interested", for: .normal)
+            interestedButton.setTitleColor(.MDBBlue, for: .normal)
+            interestedButton.backgroundColor = .clear
+            interestedButton.isUserInteractionEnabled = false
         }
         else{
-            imInterestedButton.setTitle("Interested", for: .normal)
-            imInterestedButton.setTitleColor(.MDBYellow, for: .normal)
-            imInterestedButton.backgroundColor = .MDBBlue
-            imInterestedButton.isUserInteractionEnabled = true
+            interestedButton.setTitle("Interested", for: .normal)
+            interestedButton.setTitleColor(.MDBYellow, for: .normal)
+            interestedButton.backgroundColor = .MDBBlue
+            interestedButton.isUserInteractionEnabled = true
         }
     }
     
-    @objc func tappedImInterested(){
+    @objc func tappedInterested(){
         FirebaseDatabaseHelper.updateInterested(postId: viewController.post.id!, userId: (FirebaseAuthHelper.getCurrentUser()?.uid)!).then { success -> Void in
             print("Updated interested")
-            self.imInterestedButton.setTitle("Already Interested", for: .normal)
-            self.imInterestedButton.setTitleColor(.darkGray, for: .normal)
-            self.imInterestedButton.isUserInteractionEnabled = false
+            self.interestedButton.setTitle("Already Interested", for: .normal)
+            self.interestedButton.setTitleColor(.darkGray, for: .normal)
+            self.interestedButton.isUserInteractionEnabled = false
             self.viewController.post.addInterestedUser(userID: (FirebaseAuthHelper.getCurrentUser()?.uid)!)
             self.interestedLabel.text = "Members Interested: " + String(describing: self.viewController.post.getInterestedUserIds().count)
         }

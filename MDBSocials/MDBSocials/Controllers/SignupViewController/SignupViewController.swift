@@ -14,8 +14,8 @@ class SignupViewController: UIViewController {
     var usernameField:UITextField!
     var emailField: UITextField!
     var passwordField: UITextField!
-    var selectCameraImageButton: UIButton!
-    var selectLibraryImageButton: UIButton!
+    var cameraImageButton: UIButton!
+    var libraryImageButton: UIButton!
     var selectedImageView: UIImageView!
     var logInButton: UIButton!
     var signUpButton: UIButton!
@@ -30,7 +30,6 @@ class SignupViewController: UIViewController {
         
         view.backgroundColor = .MDBBlue
         
-        setupTitleLabel()
         setupFullNameField()
         setupUsernameField()
         setupEmailField()
@@ -46,26 +45,17 @@ class SignupViewController: UIViewController {
         super.touchesBegan(touches, with: event)
     }
     
-    func setupTitleLabel(){
-        signupTitleLabel = UILabel(frame: CGRect(x: 30, y: 30, width: view.frame.width - 60, height: 80))
-        signupTitleLabel.font = UIFont(name: "Helvetica", size: 40)
-        signupTitleLabel.text = "Sign Up"
-        signupTitleLabel.textColor = .white
-        signupTitleLabel.textAlignment = .center
-        self.view.addSubview(signupTitleLabel)
-    }
-    
     func setupPasswordField(){
         passwordField = UITextField(frame: CGRect(x: 30, y: 275, width: view.frame.width - 60, height: 40))
         passwordField.placeholder = "Password"
-        passwordField.backgroundColor = .MDBYellow
+        passwordField.backgroundColor = .white
         passwordField.isSecureTextEntry = true
         self.view.addSubview(passwordField)
     }
     
     func setupFullNameField(){
         fullNameField = UITextField(frame: CGRect(x: 30, y: 125, width: view.frame.width - 60, height: 40))
-        fullNameField.backgroundColor = .MDBYellow
+        fullNameField.backgroundColor = .white
         fullNameField.placeholder = "Full Name"
         self.view.addSubview(fullNameField)
     }
@@ -73,34 +63,34 @@ class SignupViewController: UIViewController {
     func setupEmailField(){
         emailField = UITextField(frame: CGRect(x: 30, y: 225, width: view.frame.width - 60, height: 40))
         emailField.placeholder = "Email"
-        emailField.backgroundColor = .MDBYellow
+        emailField.backgroundColor = .white
         self.view.addSubview(emailField)
     }
 
     func setupUsernameField(){
         usernameField = UITextField(frame: CGRect(x: 30, y: 175, width: view.frame.width - 60, height: 40))
         usernameField.placeholder = "Username"
-        usernameField.backgroundColor = .MDBYellow
+        usernameField.backgroundColor = .white
         self.view.addSubview(usernameField)
     }
 
     
     func setupImagePicker(){
-        selectCameraImageButton = UIButton(frame: CGRect(x: view.frame.width/2 + 20, y: 350, width: view.frame.width/2 - 40, height: 50))
-        selectCameraImageButton.setTitle("Take Picture", for: .normal)
-        selectCameraImageButton.backgroundColor = .white
-        selectCameraImageButton.layer.cornerRadius = 10
-        selectCameraImageButton.setTitleColor(.MDBBlue, for: .normal)
-        selectCameraImageButton.addTarget(self, action: #selector(selectPictureFromCamera), for: .touchUpInside)
-        self.view.addSubview(selectCameraImageButton)
+        cameraImageButton = UIButton(frame: CGRect(x: view.frame.width/2 + 20, y: 350, width: view.frame.width/2 - 40, height: 40))
+        cameraImageButton.setTitle("Take Picture", for: .normal)
+        cameraImageButton.backgroundColor = .MDBYellow
+        cameraImageButton.layer.cornerRadius = 10
+        cameraImageButton.setTitleColor(.MDBBlue, for: .normal)
+        cameraImageButton.addTarget(self, action: #selector(selectPictureFromCamera), for: .touchUpInside)
+        self.view.addSubview(cameraImageButton)
         
-        selectLibraryImageButton = UIButton(frame: CGRect(x: view.frame.width/2 + 20, y: 410, width: view.frame.width/2 - 40, height: 50))
-        selectLibraryImageButton.setTitle("Select Picture", for: .normal)
-        selectLibraryImageButton.layer.cornerRadius = 10
-        selectLibraryImageButton.backgroundColor = .white
-        selectLibraryImageButton.setTitleColor(.MDBBlue, for: .normal)
-        selectLibraryImageButton.addTarget(self, action: #selector(selectPictureFromLibrary), for: .touchUpInside)
-        self.view.addSubview(selectLibraryImageButton)
+        libraryImageButton = UIButton(frame: CGRect(x: view.frame.width/2 + 20, y: 410, width: view.frame.width/2 - 40, height: 40))
+        libraryImageButton.setTitle("Select Picture", for: .normal)
+        libraryImageButton.layer.cornerRadius = 10
+        libraryImageButton.backgroundColor = .MDBYellow
+        libraryImageButton.setTitleColor(.MDBBlue, for: .normal)
+        libraryImageButton.addTarget(self, action: #selector(selectPictureFromLibrary), for: .touchUpInside)
+        self.view.addSubview(libraryImageButton)
         
         selectedImageView = UIImageView(frame: CGRect(x: 10, y: 350, width: view.frame.width/2 - 20, height: 110))
         selectedImageView.contentMode = .scaleAspectFit
@@ -128,7 +118,7 @@ class SignupViewController: UIViewController {
     func setupSignupButton(){
         signUpButton = UIButton(frame: CGRect(x: view.frame.width/2 - 100, y: 500, width: 200, height: 60))
         signUpButton.setTitle("Create Account", for: .normal)
-        signUpButton.backgroundColor = .white
+        signUpButton.backgroundColor = .MDBYellow
         signUpButton.layer.cornerRadius = 10
         signUpButton.addTarget(self, action: #selector(tappedCreateAccount), for: .touchUpInside)
         signUpButton.setTitleColor(.MDBBlue, for: .normal)
@@ -136,7 +126,7 @@ class SignupViewController: UIViewController {
     }
     
     func setupBackButton(){
-        backButton = UIButton(frame: CGRect(x: view.frame.width/2 - 50, y: 575, width: 100, height: 60))
+        backButton = UIButton(frame: CGRect(x: view.frame.width/2 - 100, y: 575, width: 200, height: 30))
         backButton.setTitle("Cancel", for: .normal)
         backButton.backgroundColor = .white
         backButton.layer.cornerRadius = 10

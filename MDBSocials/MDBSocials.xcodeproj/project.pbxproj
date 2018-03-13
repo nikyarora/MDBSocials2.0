@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		01D02414204BBC4A0043B483 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01D02413204BBC4A0043B483 /* GoogleService-Info.plist */; };
+		01D8EA892057CE3D00D05536 /* NewSocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01D8EA882057CE3D00D05536 /* NewSocialView.swift */; };
 		68EDE3B95511B67553ECB9E4 /* Pods_MDBSocialsUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 082485A8970F848EB6160699 /* Pods_MDBSocialsUITests.framework */; };
 		6C4AB5E4204A701900F38DE1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4AB5E3204A701900F38DE1 /* Constants.swift */; };
-		6C5AAFFD204B5F2F001CFBD3 /* NewSocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5AAFFC204B5F2F001CFBD3 /* NewSocialView.swift */; };
 		6C5AB002204B61BD001CFBD3 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C5AB001204B61BD001CFBD3 /* DetailView.swift */; };
 		6C6E729E204A1D2E00244C59 /* InterestedUsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C6E729D204A1D2E00244C59 /* InterestedUsersViewController.swift */; };
 		6C760280204B7F2200BBCD3F /* MyEventsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C76027F204B7F2200BBCD3F /* MyEventsViewController.swift */; };
@@ -54,12 +54,12 @@
 
 /* Begin PBXFileReference section */
 		01D02413204BBC4A0043B483 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		01D8EA882057CE3D00D05536 /* NewSocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSocialView.swift; sourceTree = "<group>"; };
 		082485A8970F848EB6160699 /* Pods_MDBSocialsUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDBSocialsUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		153B2F77E7E1AB79A0DF00C1 /* Pods-MDBSocialsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDBSocialsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MDBSocialsUITests/Pods-MDBSocialsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		296F0B948C7E09A3B17A364B /* Pods_MDBSocials.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MDBSocials.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C13E0E133DDDF7B4AC9A365 /* Pods-MDBSocials.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MDBSocials.release.xcconfig"; path = "Pods/Target Support Files/Pods-MDBSocials/Pods-MDBSocials.release.xcconfig"; sourceTree = "<group>"; };
 		6C4AB5E3204A701900F38DE1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		6C5AAFFC204B5F2F001CFBD3 /* NewSocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSocialView.swift; sourceTree = "<group>"; };
 		6C5AB001204B61BD001CFBD3 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		6C6E729D204A1D2E00244C59 /* InterestedUsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestedUsersViewController.swift; sourceTree = "<group>"; };
 		6C76027F204B7F2200BBCD3F /* MyEventsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyEventsViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +121,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01D8EA872057CDFD00D05536 /* NewSocialView */ = {
+			isa = PBXGroup;
+			children = (
+				01D8EA882057CE3D00D05536 /* NewSocialView.swift */,
+			);
+			name = NewSocialView;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		59CC0B49F306591654479CDD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,14 +138,6 @@
 				082485A8970F848EB6160699 /* Pods_MDBSocialsUITests.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		6C5AAFF9204B5CF5001CFBD3 /* NewSocialView */ = {
-			isa = PBXGroup;
-			children = (
-				6C5AAFFC204B5F2F001CFBD3 /* NewSocialView.swift */,
-			);
-			path = NewSocialView;
 			sourceTree = "<group>";
 		};
 		6C5AB000204B61B0001CFBD3 /* DetailView */ = {
@@ -166,8 +167,8 @@
 		6CDE31FE20472E6200A74050 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				01D8EA872057CDFD00D05536 /* NewSocialView */,
 				6C5AB000204B61B0001CFBD3 /* DetailView */,
-				6C5AAFF9204B5CF5001CFBD3 /* NewSocialView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,8 +234,8 @@
 		6CDEA3A5203BF5E4002BA2DC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6C76027E204B7F0B00BBCD3F /* MyEventsViewController */,
 				6C6E729C204A1D0F00244C59 /* InterestedUsersViewController */,
+				6C76027E204B7F0B00BBCD3F /* MyEventsViewController */,
 				6CDEA3AA203BF633002BA2DC /* NewSocialViewController */,
 				6CDEA3A9203BF62C002BA2DC /* DetailViewController */,
 				6CDEA3A8203BF622002BA2DC /* FeedViewController */,
@@ -656,11 +657,11 @@
 				6C6E729E204A1D2E00244C59 /* InterestedUsersViewController.swift in Sources */,
 				6CDEA3B4203BF6F4002BA2DC /* DetailViewController.swift in Sources */,
 				6CDEA3B2203BF6EE002BA2DC /* FeedViewController.swift in Sources */,
+				01D8EA892057CE3D00D05536 /* NewSocialView.swift in Sources */,
 				6CDEA3BD203D31D4002BA2DC /* FirebaseDatabaseHelper.swift in Sources */,
 				6CDEA3B8203BF949002BA2DC /* FirebaseAuthHelper.swift in Sources */,
 				6CDEA378203BF48F002BA2DC /* AppDelegate.swift in Sources */,
 				6CDEA3BF203D4F5D002BA2DC /* Post.swift in Sources */,
-				6C5AAFFD204B5F2F001CFBD3 /* NewSocialView.swift in Sources */,
 				6CDEA3C1203E4179002BA2DC /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

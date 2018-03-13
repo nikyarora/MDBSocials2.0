@@ -11,8 +11,8 @@ import Firebase
 
 class LoginViewController: UIViewController {
     
-    var emailField: UITextField!
-    var passwordField: UITextField!
+    var emailText: UITextField!
+    var passwordText: UITextField!
     var logInButton: UIButton!
     var signUpButton: UIButton!
     var appTitle: UIImageView!
@@ -24,11 +24,11 @@ class LoginViewController: UIViewController {
         self.navigationController?.navigationBar.isHidden = true
         view.backgroundColor = .MDBBlue
         
-        setupLogo()
-        setupEmailField()
-        setupPasswordField()
         setupLogInButton()
         setupMakeAccountButton()
+        setupLogo()
+        setupemailText()
+        setuppasswordText()
         
         if Auth.auth().currentUser != nil {
             performSegue(withIdentifier: "toFeedFromLogin", sender: self)
@@ -47,32 +47,32 @@ class LoginViewController: UIViewController {
         self.view.addSubview(appTitle)
     }
     
-    func setupEmailField(){
-        emailField = UITextField(frame: CGRect(x: view.frame.width * 0.2, y: view.frame.height * 0.4, width: view.frame.width * 0.6, height: 50))
-        emailField.adjustsFontSizeToFitWidth = true
-        emailField.placeholder = "  Email"
-        emailField.backgroundColor = .white
-        emailField.layer.cornerRadius = CGFloat(3.0)
-        emailField.layoutIfNeeded()
-        emailField.layer.borderColor = UIColor.lightGray.cgColor
-        emailField.layer.borderWidth = 1.0
-        emailField.layer.masksToBounds = true
-        emailField.textColor = UIColor.black
-        self.view.addSubview(emailField)
+    func setupemailText(){
+        emailText = UITextField(frame: CGRect(x: view.frame.width * 0.2, y: view.frame.height * 0.4, width: view.frame.width * 0.6, height: 50))
+        emailText.adjustsFontSizeToFitWidth = true
+        emailText.placeholder = "  Email"
+        emailText.backgroundColor = .white
+        emailText.layer.cornerRadius = CGFloat(3.0)
+        emailText.layoutIfNeeded()
+        emailText.layer.borderColor = UIColor.lightGray.cgColor
+        emailText.layer.borderWidth = 1.0
+        emailText.layer.masksToBounds = true
+        emailText.textColor = UIColor.black
+        self.view.addSubview(emailText)
     }
     
-    func setupPasswordField(){
-        passwordField = UITextField(frame: CGRect(x: view.frame.width * 0.2, y: view.frame.height * 0.5, width: view.frame.width * 0.6, height: 50))
-        passwordField.adjustsFontSizeToFitWidth = true
-        passwordField.placeholder = "  Password"
-        passwordField.backgroundColor = .white
-        passwordField.layer.cornerRadius = CGFloat(3.0)
-        passwordField.layer.borderColor = UIColor.lightGray.cgColor
-        passwordField.layer.borderWidth = 1.0
-        passwordField.layer.masksToBounds = true
-        passwordField.textColor = UIColor.black
-        passwordField.isSecureTextEntry = true
-        self.view.addSubview(passwordField)
+    func setuppasswordText(){
+        passwordText = UITextField(frame: CGRect(x: view.frame.width * 0.2, y: view.frame.height * 0.5, width: view.frame.width * 0.6, height: 50))
+        passwordText.adjustsFontSizeToFitWidth = true
+        passwordText.placeholder = "  Password"
+        passwordText.backgroundColor = .white
+        passwordText.layer.cornerRadius = CGFloat(3.0)
+        passwordText.layer.borderColor = UIColor.lightGray.cgColor
+        passwordText.layer.borderWidth = 1.0
+        passwordText.layer.masksToBounds = true
+        passwordText.textColor = UIColor.black
+        passwordText.isSecureTextEntry = true
+        self.view.addSubview(passwordText)
     }
     
     func setupLogInButton(){
@@ -96,13 +96,13 @@ class LoginViewController: UIViewController {
     }
     
     @objc func dismissKeyboard (_ sender: UITapGestureRecognizer) {
-        emailField.resignFirstResponder()
-        passwordField.resignFirstResponder()
+        emailText.resignFirstResponder()
+        passwordText.resignFirstResponder()
     }
     
     @objc func tappedLogin(){
-        if emailField.hasText && passwordField.hasText{
-            FirebaseAuthHelper.logIn(email: emailField.text!, password: passwordField.text!, withBlock: { (user) in
+        if emailText.hasText && passwordText.hasText{
+            FirebaseAuthHelper.logIn(email: emailText.text!, password: passwordText.text!, withBlock: { (user) in
                 self.performSegue(withIdentifier: "toFeedFromLogin", sender: self)
             })
         }
